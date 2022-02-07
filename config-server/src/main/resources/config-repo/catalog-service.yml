@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/catalog
+  zipkin:
+    base-url: http://localhost:9411
+  flyway:
+    baseline-on-migrate: true
+    validate-on-migrate: false
