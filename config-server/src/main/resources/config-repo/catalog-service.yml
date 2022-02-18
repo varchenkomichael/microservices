@@ -3,6 +3,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/catalog
     username: mvarchenko
+    password: 12345
   zipkin:
     base-url: http://localhost:9411
   flyway:

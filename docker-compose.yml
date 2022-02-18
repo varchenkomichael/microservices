@@ -18,7 +18,7 @@ services:
     ports:
       - "9411:9411"
   db:
-    image: postgres:10.5
+    image: postgres:14-alpine
     restart: always
     environment:
       - POSTGRES_USER=mvarchenko
