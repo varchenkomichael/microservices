@@ -21,19 +21,14 @@
         <java.version>1.8</java.version>
         <spring-cloud-starter-bootstrap.version>3.1.0</spring-cloud-starter-bootstrap.version>
         <spring-cloud-starter-config.version>3.1.0</spring-cloud-starter-config.version>
-        <zipkin-server.version>2.12.9</zipkin-server.version>
-        <zipkin-autoconfigure-ui.version>2.12.9</zipkin-autoconfigure-ui.version>
+        <zipkin-server.version>2.11.7</zipkin-server.version>
+        <zipkin-autoconfigure-ui.version>2.11.7</zipkin-autoconfigure-ui.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

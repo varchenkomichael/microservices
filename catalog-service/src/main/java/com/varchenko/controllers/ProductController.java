@@ -26,6 +26,7 @@ public class ProductController {
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Product productById(@PathVariable("id") String id) {
         networkDelay();
+        log.info("Products by id: " + id);
         return productService.findProductById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product with id: " + id + " doesn't exist"));
     }

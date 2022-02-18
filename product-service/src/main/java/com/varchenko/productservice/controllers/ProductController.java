@@ -1,6 +1,7 @@
 package com.varchenko.productservice.controllers;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.varchenko.productservice.entity.Product;
 import com.varchenko.productservice.exceptions.ProductNotFoundException;
 import com.varchenko.productservice.services.ProductService;
@@ -22,8 +23,12 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("{id}")
-    @HystrixCommand(commandKey = "available-product-by-id", fallbackMethod = "productByIdFallBack")
+    @HystrixCommand(commandKey = "available-product-by-id", fallbackMethod = "productByIdFallBack", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")})
     public ResponseEntity<Product> availableProductById(@PathVariable String id) {
+        log.info("Available product with id: " + id);
         return productService.availableProductById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new ProductNotFoundException("Product with " + id + " doesn't exist"));

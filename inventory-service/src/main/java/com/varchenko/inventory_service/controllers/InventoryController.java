@@ -27,6 +27,7 @@ public class InventoryController {
     @GetMapping(value = "/inventories", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Inventory> statusByIds(@RequestParam List<String> ids) {
         networkDelay();
+        log.info("Availability to products with id: " + ids);
         return inventoryService.findInventoriesByIds(ids);
     }
 
